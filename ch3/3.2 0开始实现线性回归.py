@@ -9,6 +9,7 @@ import torch
 from IPython import display
 from matplotlib import pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D  # 空间三维画图
 import random
 
 print("3.2.1 生成数据集")
@@ -20,7 +21,7 @@ true_b = 4.2
 features = torch.from_numpy(np.random.normal(0, 1, (num_examples, num_inputs)))
 
 labels = true_w[0] * features[:, 0] + true_w[1] * features[:, 1] + true_b
-labels += torch.from_numpy(np.random.normal(0, 0.01,size=labels.size()))
+labels += torch.from_numpy(np.random.normal(0, 1,size=labels.size())) # 标签加一个均值为0方差为1的噪声
 print(features[0], labels[0])
 
 def use_svg_display():
@@ -31,10 +32,18 @@ def set_figsize(figsize=(3.5, 2.5)):
     plt.rcParams['figure.figsize'] = figsize
 
 set_figsize()
-plt.scatter(features[:, 1].numpy(), labels.numpy(), 1)
+plt.scatter(features[:, 1].numpy(), labels.numpy(), 1);     # 2维
+
+fig = plt.figure()
+ax = Axes3D(fig)
+ax.scatter(features[:, 0].numpy(), features[:, 1].numpy(), labels.numpy())    #3维
 
 plt.show()
 
-print("3.2.2 ")
+print("3.2.2 读取数据 ")
 
-print("3.2.3 ")
+
+
+
+
+print("3.2.3 初始化模型 ")
