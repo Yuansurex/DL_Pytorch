@@ -23,10 +23,17 @@ labels = true_w[0] * features[:, 0] + true_w[1] * features[:, 1] + true_b
 labels += torch.from_numpy(np.random.normal(0, 0.01,size=labels.size()))
 print(features[0], labels[0])
 
-fig, ax = plt.subplots()
-ax.scatter(features[:, 1].numpy(), labels.numpy())
+def use_svg_display():
+    display.set_matplotlib_formats("svg")
 
+def set_figsize(figsize=(3.5, 2.5)):
+    use_svg_display()
+    plt.rcParams['figure.figsize'] = figsize
 
+set_figsize()
+plt.scatter(features[:, 1].numpy(), labels.numpy(), 1)
+
+plt.show()
 
 print("3.2.2 ")
 
