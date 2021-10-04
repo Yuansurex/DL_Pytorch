@@ -7,5 +7,5 @@
 print("*" * 50)
 import os
 for i in range(3,11):
-    # os.makedirs("ch"+str(i))
+    #os.makedirs("ch"+str(i))
     os.removedirs("ch"+str(i))
