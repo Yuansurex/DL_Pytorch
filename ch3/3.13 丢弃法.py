@@ -101,6 +101,3 @@ for param in net.parameters():
 
 optimizer = torch.optim.SGD(net.parameters(), lr=0.5)
 d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size, None, None, optimizer)
-
-# 3.14 正向传播、反向传播和计算图
-# 3.15 数值稳定性和模型初始化
